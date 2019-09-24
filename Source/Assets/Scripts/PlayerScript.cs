@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject rayOrigin;
     public float rayCheckDistance;
     Rigidbody2D rb;
+    Animator anim;
 
     void Start()
     {
@@ -27,6 +28,20 @@ public class PlayerScript : MonoBehaviour
             }
         }
         rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
+
+        if (x == 0)
+        {
+
+            anim.Play("idle");
+
+        }
+
+        else
+        {
+            anim.Play("Walking");
+        }
+
+
 
     }
 }
