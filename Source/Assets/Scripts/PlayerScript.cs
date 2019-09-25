@@ -28,11 +28,11 @@ public class PlayerScript : MonoBehaviour
             }
         }
         rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
-
+        /*
         if (x == 0)
         {
 
-            anim.Play("idle");
+            anim.Play("Idle");
 
         }
 
@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
             anim.Play("Walking");
         }
 
-
+        */
 
     }
 }
