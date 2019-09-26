@@ -25,23 +25,10 @@ public class PlayerScript : MonoBehaviour
             if (hit.collider != null)
             {
                 rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+                anim.Play("Jump");
             }
         }
         rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
-        /*
-        if (x == 0)
-        {
-
-            anim.Play("Idle");
-
-        }
-
-        else
-        {
-            anim.Play("Walking");
-        }
-
-        */
 
     }
 }
