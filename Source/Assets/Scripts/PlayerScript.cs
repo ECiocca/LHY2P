@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float speed;
     public float jump;
+    public bool isJumping = false;
     public GameObject rayOrigin;
     public float rayCheckDistance;
     Rigidbody2D rb;
@@ -19,15 +20,36 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+
+        if (isJumping == false)
         {
-            rb.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
+            if (Input.GetKey(KeyCode.Space))
+            {
+                isJumping = true;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector2(speed, 0), ForceMode2D.Force);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (isJumping == true)
         {
-            rb.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector2(speed/2, 0), ForceMode2D.Force);
+            }
 
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector2(-speed/2, 0), ForceMode2D.Force);
+            }
+        }
     }
 }

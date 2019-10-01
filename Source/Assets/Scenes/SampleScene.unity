@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2645,8 +2645,8 @@ GameObject:
   - component: {fileID: 1908513263}
   - component: {fileID: 1908513262}
   - component: {fileID: 1908513265}
-  - component: {fileID: 1908513267}
   - component: {fileID: 1908513266}
+  - component: {fileID: 1908513267}
   m_Layer: 0
   m_Name: Protag
   m_TagString: Untagged
@@ -2751,6 +2751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   jump: 4
+  isJumping: 0
   rayOrigin: {fileID: 1908513261}
   rayCheckDistance: 0
 --- !u!50 &1908513266
@@ -2761,7 +2762,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908513261}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
