@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public float speed;
-    public float jump;
+    public float jumpSpeedStart;
+    float jumpSpeed;
     public bool isJumping = false;
     public GameObject rayOrigin;
     public float rayCheckDistance;
     Rigidbody2D rb;
     Animator anim;
+    public float jumpSpeedDecay;
+    RaycastHit2D hit;
 
     void Start()
     {
@@ -18,7 +21,7 @@ public class PlayerScript : MonoBehaviour
         rb.freezeRotation = true;
     }
 
-    void FixedUpdate()
+void FixedUpdate()
     {
 
         if (isJumping == false)
@@ -26,6 +29,7 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 isJumping = true;
+                jumpSpeed = jumpSpeedStart;
             }
 
             if (Input.GetKey(KeyCode.D))
@@ -41,14 +45,26 @@ public class PlayerScript : MonoBehaviour
 
         if (isJumping == true)
         {
+
             if (Input.GetKey(KeyCode.D))
             {
                 rb.AddForce(new Vector2(speed/2, 0), ForceMode2D.Force);
             }
 
-            if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 rb.AddForce(new Vector2(-speed/2, 0), ForceMode2D.Force);
+            }
+
+            rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);
+            jumpSpeed = Mathf.Clamp(jumpSpeed - (Time.deltaTime * jumpSpeedDecay), 0, jumpSpeedStart);
+
+            Debug.Log("isjumping" + isJumping);
+
+            hit = Physics2D.Raycast(transform.position, -Vector3.up);
+            if (hit.distance <= 0.1f)
+            {
+                isJumping = false;
             }
         }
     }
