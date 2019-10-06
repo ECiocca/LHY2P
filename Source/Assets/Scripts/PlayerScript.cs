@@ -6,14 +6,13 @@ public class PlayerScript : MonoBehaviour
 {
     public float speed;
     public float jumpSpeedStart;
+    public float jumpSpeedDecay;
     float jumpSpeed;
     public bool isJumping = false;
     public GameObject rayOrigin;
     public float rayCheckDistance;
     Rigidbody2D rb;
     Animator anim;
-    public float jumpSpeedDecay;
-    RaycastHit2D hit;
 
     void Start()
     {
@@ -58,14 +57,12 @@ void FixedUpdate()
 
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);
             jumpSpeed = Mathf.Clamp(jumpSpeed - (Time.deltaTime * jumpSpeedDecay), 0, jumpSpeedStart);
+        }
 
-            Debug.Log("isjumping" + isJumping);
-
-            hit = Physics2D.Raycast(transform.position, -Vector3.up);
-            if (hit.distance <= 0.1f)
-            {
-                isJumping = false;
-            }
+        Debug.Log("speedY " + GetComponent<Rigidbody2D>().velocity.y);
+        if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) == 0)
+        {
+            isJumping = false;
         }
     }
 }
