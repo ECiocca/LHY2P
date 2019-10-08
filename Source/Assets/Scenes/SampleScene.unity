@@ -2750,12 +2750,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  jumpSpeedStart: 24
+  jumpSpeedStart: 48
+  jumpSpeedDecay: 4
   isJumping: 0
   rayOrigin: {fileID: 1908513261}
   rayCheckDistance: 0
-  jumpSpeedDecay: 24
-  tileMapColider: {fileID: 0}
 --- !u!50 &1908513266
 Rigidbody2D:
   serializedVersion: 4

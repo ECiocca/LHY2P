@@ -56,10 +56,9 @@ void FixedUpdate()
             }
 
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);
-            jumpSpeed = Mathf.Clamp(jumpSpeed - (Time.deltaTime * jumpSpeedDecay), 0, jumpSpeedStart);
+            jumpSpeed = Mathf.Clamp(jumpSpeed - (Time.deltaTime * (jumpSpeedDecay * jumpSpeedStart)), 0, jumpSpeedStart);
         }
 
-        Debug.Log("speedY " + GetComponent<Rigidbody2D>().velocity.y);
         if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) == 0)
         {
             isJumping = false;
