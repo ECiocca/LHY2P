@@ -7,10 +7,11 @@ public class PlayerScript : MonoBehaviour
     public float speed;
     public float jumpSpeedStart;
     public float jumpSpeedDecay;
+    public float jumpXSpeed;
+    float rayCheckDistance;
     float jumpSpeed;
-    public bool isJumping = false;
+    bool isJumping = false;
     public GameObject rayOrigin;
-    public float rayCheckDistance;
     Rigidbody2D rb;
     Animator anim;
 
@@ -52,7 +53,7 @@ void FixedUpdate()
 
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.AddForce(new Vector2(-speed/2, 0), ForceMode2D.Force);
+                rb.AddForce(new Vector2(-speed/jumpXSpeed, 0), ForceMode2D.Force);
             }
 
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);
