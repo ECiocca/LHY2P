@@ -48,12 +48,12 @@ void FixedUpdate()
 
             if (Input.GetKey(KeyCode.D))
             {
-                rb.AddForce(new Vector2(speed/2, 0), ForceMode2D.Force);
+                rb.AddForce(new Vector2(speed / jumpXSpeed, 0), ForceMode2D.Force);
             }
 
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.AddForce(new Vector2(-speed/jumpXSpeed, 0), ForceMode2D.Force);
+                rb.AddForce(new Vector2(-speed / jumpXSpeed, 0), ForceMode2D.Force);
             }
 
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);

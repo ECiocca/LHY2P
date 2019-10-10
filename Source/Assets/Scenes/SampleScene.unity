@@ -2765,9 +2765,8 @@ MonoBehaviour:
   speed: 12
   jumpSpeedStart: 48
   jumpSpeedDecay: 3.5
-  isJumping: 0
+  jumpXSpeed: 2
   rayOrigin: {fileID: 1908513261}
-  rayCheckDistance: 0
 --- !u!50 &1908513266
 Rigidbody2D:
   serializedVersion: 4
