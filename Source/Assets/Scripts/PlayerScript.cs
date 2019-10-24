@@ -30,13 +30,13 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                rb.AddForce(new Vector2(aceleration, 0), ForceMode2D.Force);
+                rb.velocity = new Vector2(rb.velocity.x + aceleration, 0);
                 rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
             }
 
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.AddForce(new Vector2(-aceleration, 0), ForceMode2D.Force);
+                rb.velocity = new Vector2(rb.velocity.x - aceleration, 0);
                 rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
             }
 
