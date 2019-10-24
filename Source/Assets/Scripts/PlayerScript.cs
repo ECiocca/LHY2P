@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float speed;
+    public float aceleration;
+    public float decay;
+    public float maxSpeed;
     public float jumpSpeedStart;
     public float jumpSpeedDecay;
     public float jumpXSpeed;
@@ -21,48 +23,35 @@ public class PlayerScript : MonoBehaviour
         rb.freezeRotation = true;
     }
 
-void FixedUpdate()
+    void FixedUpdate()
     {
 
         if (isJumping == false)
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                isJumping = true;
-                jumpSpeed = jumpSpeedStart;
-            }
-
             if (Input.GetKey(KeyCode.D))
             {
-                rb.AddForce(new Vector2(speed, 0), ForceMode2D.Force);
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                rb.AddForce(new Vector2(-speed, 0), ForceMode2D.Force);
-            }
-        }
-
-        if (isJumping == true)
-        {
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.AddForce(new Vector2(speed / jumpXSpeed, 0), ForceMode2D.Force);
+                rb.AddForce(new Vector2(aceleration, 0), ForceMode2D.Force);
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
             }
 
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.AddForce(new Vector2(-speed / jumpXSpeed, 0), ForceMode2D.Force);
+                rb.AddForce(new Vector2(-aceleration, 0), ForceMode2D.Force);
+                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
             }
 
-            rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Force);
-            jumpSpeed = Mathf.Clamp(jumpSpeed - (Time.deltaTime * (jumpSpeedDecay * jumpSpeedStart)), 0, jumpSpeedStart);
-        }
+            else
+            {
+                if(rb.velocity.x > 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x * decay * Time.deltaTime, rb.velocity.y);
+                }
 
-        if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) == 0)
-        {
-            isJumping = false;
+                if (rb.velocity.x < 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x * decay * Time.deltaTime, rb.velocity.y);
+                }
+            }
         }
     }
 }

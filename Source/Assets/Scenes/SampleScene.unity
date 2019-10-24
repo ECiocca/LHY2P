@@ -2762,7 +2762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22484ffd63e2044e19de7eddb7023c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  aceleration: 12
+  decay: 1
+  maxSpeed: 6
   jumpSpeedStart: 48
   jumpSpeedDecay: 3.5
   jumpXSpeed: 2
