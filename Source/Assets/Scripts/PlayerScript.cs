@@ -25,20 +25,32 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        if (isJumping == false)
+        //moves the player on the X axis
+        if (Input.GetKey(KeyCode.D))
         {
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.velocity = new Vector2(rb.velocity.x + aceleration, rb.velocity.y);
-                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
-            }
+            MoveX(true); //true means right
+        }
 
-            else if (Input.GetKey(KeyCode.A))
-            {
-                rb.velocity = new Vector2(rb.velocity.x - aceleration, rb.velocity.y);
-                rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
-            }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            MoveX(false); //false means left
+        }
+
+        //checks if the player is jumping grounded or falling
+    }
+
+    void MoveX(bool goingRight)
+    {
+        if (goingRight)
+        {
+            rb.velocity = new Vector2(rb.velocity.x + aceleration, rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
+        }
+
+        if (!goingRight)
+        {
+            rb.velocity = new Vector2(rb.velocity.x - aceleration, rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
         }
     }
 }
