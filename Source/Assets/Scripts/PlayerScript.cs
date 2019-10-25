@@ -30,27 +30,14 @@ public class PlayerScript : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                rb.velocity = new Vector2(rb.velocity.x + aceleration, 0);
+                rb.velocity = new Vector2(rb.velocity.x + aceleration, rb.velocity.y);
                 rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
             }
 
             else if (Input.GetKey(KeyCode.A))
             {
-                rb.velocity = new Vector2(rb.velocity.x - aceleration, 0);
+                rb.velocity = new Vector2(rb.velocity.x - aceleration, rb.velocity.y);
                 rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
-            }
-
-            else
-            {
-                if(rb.velocity.x > 0)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x * decay * Time.deltaTime, rb.velocity.y);
-                }
-
-                if (rb.velocity.x < 0)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x * decay * Time.deltaTime, rb.velocity.y);
-                }
             }
         }
     }
