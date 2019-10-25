@@ -12,9 +12,11 @@ public class PlayerScript : MonoBehaviour
     public float jumpXSpeed;
     float rayCheckDistance;
     float jumpSpeed;
-    bool isJumping = false;
+    public bool isJumping = false;
     public GameObject rayOrigin;
+    public Collider2D tilemapCollider;
     Rigidbody2D rb;
+    RaycastHit2D raycastHit;
     Animator anim;
 
     void Start()
@@ -36,7 +38,19 @@ public class PlayerScript : MonoBehaviour
             MoveX(false); //false means left
         }
 
-        //checks if the player is jumping grounded or falling
+        if(!isJumping && Input.GetKey(KeyCode.Space))
+        {
+            jumpSpeed = jumpSpeedStart;
+            isJumping = true;
+        }
+
+        if (isJumping)
+        {
+            Debug.Log("jumpSpeed " + jumpSpeed);
+            jumpSpeed -= (jumpSpeedDecay * Time.deltaTime);
+            Debug.Log("jumpSpeed after decay " + jumpSpeed);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + Mathf.Clamp(jumpSpeed * Time.deltaTime, 0, jumpSpeedStart));
+        }
     }
 
     void MoveX(bool goingRight)
@@ -52,5 +66,10 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x - aceleration, rb.velocity.y);
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isJumping = false;
     }
 }
