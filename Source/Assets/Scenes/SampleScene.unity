@@ -350,8 +350,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1402619184}
   - component: {fileID: 1402619185}
+  - component: {fileID: 1402619186}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FeetCollide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,6 +398,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3994134, y: 0.18239427}
   m_EdgeRadius: 0
+--- !u!114 &1402619186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402619183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7fab5441db24be8be8462d802013dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1824987071
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,7 +2730,6 @@ GameObject:
   - component: {fileID: 1908513266}
   - component: {fileID: 1908513267}
   - component: {fileID: 1908513265}
-  - component: {fileID: 1908513268}
   m_Layer: 0
   m_Name: Protag
   m_TagString: Untagged
@@ -2865,29 +2877,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!61 &1908513268
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908513261}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.015126497, y: -0.4577465}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.38485378, y: 0.08450699}
-  m_EdgeRadius: 0
