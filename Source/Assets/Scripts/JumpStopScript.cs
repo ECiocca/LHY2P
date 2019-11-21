@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class JumpStopScript : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(":)");
         transform.parent.GetComponent<PlayerScript2>().isJumping = false;
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        transform.parent.GetComponent<PlayerScript2>().isJumping = false;
+    }
+
 }
