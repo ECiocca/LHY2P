@@ -2694,7 +2694,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2833,9 +2833,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3477b69fb824cafa2139526b1c6609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   speedX: 6
   jumpSpeedStart: 3500
   jumpSpeedDecay: 30
+=======
+  speedX: 240
+  maxSpeedX: 8
+  jumpSpeedStart: 240
+  jumpSpeedDecay: 0
+>>>>>>> 9cfe69b1e5785fbe775e03f483b8437d51e62c6f
   jumpXSpeed: 0
   isJumping: 0
   rayOrigin: {fileID: 1908513261}
@@ -2852,10 +2859,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
+<<<<<<< HEAD
   m_GravityScale: 3
+=======
+  m_GravityScale: 1
+>>>>>>> 9cfe69b1e5785fbe775e03f483b8437d51e62c6f
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
