@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerScript2 : MonoBehaviour
 {
     public float speedX;
-    public float maxSpeedX;
 	public float jumpSpeedStart;
 	public float jumpSpeedDecay;
 	public float jumpXSpeed;
@@ -53,22 +52,12 @@ public class PlayerScript2 : MonoBehaviour
 	{
 		if (goingRight)
 		{
-            rb.AddForce(new Vector2(speedX, 0));
-
-            if (rb.velocity.x > maxSpeedX)
-            {
-                rb.velocity = new Vector2(maxSpeedX, rb.velocity.y);
-            }
-        }
+			rb.velocity = new Vector2(speedX, rb.velocity.y);
+		}
 
 		if (!goingRight)
 		{
-            rb.AddForce(new Vector2(-speedX, 0));
-
-            if(rb.velocity.x < -maxSpeedX)
-            {
-                rb.velocity = new Vector2(-maxSpeedX, rb.velocity.y);
-            }
+            rb.velocity = new Vector2(-speedX, rb.velocity.y);
         }
 	}
 
