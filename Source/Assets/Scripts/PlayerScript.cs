@@ -19,57 +19,21 @@ public class PlayerScript : MonoBehaviour
     RaycastHit2D raycastHit;
     Animator anim;
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        //moves the player on the X axis
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(new Vector2(-maxSpeed, 0));
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
-            MoveX(true); //true means right
+            rb.AddForce(new Vector2(maxSpeed, 0));
         }
-
-        else if (Input.GetKey(KeyCode.A))
-        {
-            MoveX(false); //false means left
-        }
-
-        if(!isJumping && Input.GetKey(KeyCode.Space))
-        {
-            jumpSpeed = jumpSpeedStart;
-            isJumping = true;
-        }
-
-        if (isJumping)
-        {
-            Debug.Log("jumpSpeed " + jumpSpeed);
-            jumpSpeed -= (jumpSpeedDecay * Time.deltaTime);
-            Debug.Log("jumpSpeed after decay " + jumpSpeed);
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + Mathf.Clamp(jumpSpeed * Time.deltaTime, 0, jumpSpeedStart));
-        }
-    }
-
-    void MoveX(bool goingRight)
-    {
-        if (goingRight)
-        {
-            rb.velocity = new Vector2(rb.velocity.x + aceleration, rb.velocity.y);
-            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, 0, maxSpeed), rb.velocity.y);
-        }
-
-        if (!goingRight)
-        {
-            rb.velocity = new Vector2(rb.velocity.x - aceleration, rb.velocity.y);
-            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, 0), rb.velocity.y);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isJumping = false;
     }
 }
